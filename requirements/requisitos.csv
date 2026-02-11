@@ -1,0 +1,14 @@
+﻿ID;Texto;Tipo;Ámbito;Criterio verificable;Métricas de calidad
+RF-1;El sistema debe leer el fichero CSV (data.csv o data_toy.csv) y persistir la información;Funcional;Carga de datos;Al ejecutar el sistema se cargan todas las filas del CSV sin error;"100% de filas cargadas; tiempo de carga < 5s en data_toy"
+RF-2;Solo se aceptan peticiones HTTP GET;Funcional;Validación;Si el método ≠ GET → mensaje “Bad method”;100% de métodos distintos a GET detectados correctamente
+RF-3;Solo se aceptan códigos de estado 200 o 206;Funcional;Validación;Si status ≠ 200/206 → “Bad status”;100% de códigos inválidos detectados
+RF-4;Detectar bots por user_agent (BOT, SPIDER, CRAWLER…);Funcional;Validación / Seguridad;Si user_agent contiene patrón BOT → “Bot detected”;"100% de coincidencias detectadas; sin falsos negativos"
+RF-5;El recurso solicitado debe ser un archivo .mp3;Funcional;Validación;Si URI no termina en .mp3 → “Bad format resource”;100% de URIs inválidas detectadas
+RF-6;Generar evento de descarga válida tras pasar validaciones;Funcional;Generación;Tras validar correctamente → evento “Download OK”;100% de descargas válidas generan evento
+RF-7;Acumular bytes descargados por usuario + episodio;Funcional;Generación / Persistencia;La suma de bytes coincide con lo esperado para múltiples registros;Error acumulado = 0 en tests
+RF-8;Generar resumen por episodio (total descargas, bytes);Funcional;Resumen;Se obtiene ranking o resumen correcto por episodio;Resultados coinciden con dataset esperado
+RF-9;Generar resumen por usuario;Funcional;Resumen;Ranking correcto por usuario;100% coincidencia con resultados esperados
+RF-10;Visualizar resultados agregados;Funcional;Visualización;Se muestran datos en formato tabla/listado;Datos visibles y consistentes con resumen
+RF-11;Generar recomendación basada en comportamiento de escucha;Funcional;Recomendación;Sistema devuelve recomendación coherente según histórico;Recomendación reproducible con mismo input
+RFN-1;El sistema debe poder ejecutarse automáticamente mediante pipeline;No funcional;Interoperabilidad;GitHub Actions ejecuta tests sin intervención manual;Pipeline pasa en ≥95% de ejecuciones
+RFN-2;El sistema debe estar correctamente documentado;No funcional;Calidad / Documentación;README explica instalación y ejecución;README permite ejecutar sistema sin ayuda externa
